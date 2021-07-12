@@ -19,7 +19,6 @@ class Evolution():
         # child: an object of class `Player`
         pass
 
-
     def generate_new_population(self, num_players, prev_players=None):
 
         # in first generation, we create random players
