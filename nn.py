@@ -1,4 +1,5 @@
 import numpy as np
+from config import CONFIG
 
 
 class NeuralNetwork():
@@ -10,8 +11,10 @@ class NeuralNetwork():
         self.weights = [np.random.randn(y, x) for x, y in zip(layer_sizes[:-1], layer_sizes[1:])]
 
     def activation(self, x):
-
-        return 1.0/(1.0 + np.exp(-x))
+        if CONFIG["activation_function"] == "relu":
+            return abs(x * np.heaviside(x, 0))
+        else:
+            return 1.0/(1.0 + np.exp(-x))
 
     def forward(self, x):
 

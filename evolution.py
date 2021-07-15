@@ -44,10 +44,10 @@ class Evolution():
             # prev_players: an array of `Player` objePcts
 
             # (additional): a selection method other than `fitness proportionate`
-            # q-tournoment selection (Q = 2) (due to mu+lambda method)
+            # q-tournoment selection (due to mu+lambda method)
             selected_references = []
             for _ in range(num_players):
-                selected_references.append(tournament_selection(prev_players, 2))
+                selected_references.append(tournament_selection(prev_players, CONFIG["q_value_for_tournoment"]))
 
             # (additional): implementing crossover
             paired_parents = zip(selected_references[::2], selected_references[1::2])

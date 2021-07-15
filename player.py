@@ -89,11 +89,11 @@ class Player():
         # you can change the parameters below (even you can add more hidden layer)
         layer_sizes = None
         if mode == 'gravity':
-            layer_sizes = [5, 20, 2]
+            layer_sizes = CONFIG["gravity_mode_network"]
         elif mode == 'helicopter':
-            layer_sizes = [5, 20, 2]
+            layer_sizes = CONFIG["helicopter_mode_network"]
         elif mode == 'thrust':
-            layer_sizes = [5, 20, 3]
+            layer_sizes = CONFIG["thrust_mode_network"]
         return layer_sizes
 
     def think(self, mode, box_lists, agent_position, velocity):
@@ -107,17 +107,22 @@ class Player():
 
         # creating nomalized input vector
         if(len(box_lists) > 0):
-            input_data[0] = box_lists[0].x / CONFIG["WIDTH"]
-            input_data[1] = box_lists[0].gap_mid / CONFIG["HEIGHT"]
-        input_data[2] = agent_position[0] / CONFIG["WIDTH"]
-        input_data[3] = agent_position[1] / CONFIG["HEIGHT"]
+            input_data[0] = (box_lists[0].x - agent_position[0]) / CONFIG["WIDTH"]
+            input_data[1] = (box_lists[0].gap_mid - agent_position[1]) / CONFIG["HEIGHT"]
+
+        if(len(box_lists) > 1):
+            input_data[2] = (box_lists[1].x - agent_position[0]) / CONFIG["WIDTH"]
+            input_data[3] = (box_lists[1].gap_mid - agent_position[1]) / CONFIG["HEIGHT"]
+
         input_data[4] = velocity / CONFIG["MAXIMUM_VELOCITY"]
 
         ann_output = self.nn.forward(input_data)
 
         # (additional) all modes
         direction = 0
+
         if mode == "thrust":
+            # thrust mode wiht 3 output
             maximux_output_index = ann_output.argmax()
             if maximux_output_index == 0:
                 direction = 1
