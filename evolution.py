@@ -9,7 +9,7 @@ class Evolution():
 
     def __init__(self, mode):
         self.mode = mode
-        self.start_date = datetime.now().strftime("%m-%d-%Y.%H.%M.%S")
+        self.start_date = datetime.now().strftime("%Y-%m-%d.%H.%M.%S")
 
     # calculate fitness of players
 
