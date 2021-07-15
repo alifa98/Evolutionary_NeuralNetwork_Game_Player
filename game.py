@@ -266,7 +266,7 @@ class Game():
 
         # game loop
         while True:
-            
+
             events = pygame.event.get()
             keys = pygame.key.get_pressed()
             if keys[pygame.K_ESCAPE]:
@@ -329,9 +329,8 @@ class Game():
             self.screen.blit(self.font.render("Score: " + str(self.camera), -1, color), (25, 60))
             if show_fps:
                 self.screen.blit(self.speed_font.render(f'{str(1000 // dt)}', -1, color), (1200, 650))
-            
-            pygame.display.update()
 
+            pygame.display.update()
 
     def load_images(self, mode):
         background = pygame.image.load(f'sprites/back_{mode}.jpg').convert()
@@ -369,7 +368,7 @@ class Game():
 
 
 if __name__ == '__main__':
-    is_play = True if args.play == 'True' else False 
+    is_play = True if args.play == 'True' else False
     if is_play:
         Game().play(args.mode)
     else:

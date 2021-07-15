@@ -1,15 +1,18 @@
 from player import Player
 import numpy as np
 from config import CONFIG
-from myfunctions import crossover, sus, top_k_selection, tournament_selection
+from myfunctions import crossover, save_population_info, sus, top_k_selection, tournament_selection
+from datetime import datetime
 
 
 class Evolution():
 
     def __init__(self, mode):
         self.mode = mode
+        self.start_date = datetime.now().strftime("%m-%d-%Y.%H.%M.%S")
 
     # calculate fitness of players
+
     def calculate_fitness(self, players, delta_xs):
         for i, p in enumerate(players):
             p.fitness = delta_xs[i]
@@ -74,6 +77,6 @@ class Evolution():
             selected = top_k_selection(players, num_players)
 
         # (additional): plotting
-        # TODO: the save information fucntion is written in functions.py
+        save_population_info(players, self.start_date)
 
         return selected

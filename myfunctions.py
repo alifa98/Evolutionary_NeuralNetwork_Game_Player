@@ -2,6 +2,7 @@ import random
 from player import Player
 import numpy as np
 from math import floor
+from operator import attrgetter
 
 
 def tournament_selection(population, q):
@@ -10,12 +11,21 @@ def tournament_selection(population, q):
     return parents[0]
 
 
-def save_population_info(population, generation, filename):
-    with open(filename, 'a') as file:
-        file.write(f'Generation: {generation}\n')
-        for agent in population:
-            file.write(f'{agent.fitness}\n')
-        file.write('\n')
+def save_population_info(population, filename):
+
+    maximum = population[0].fitness
+    minimum = population[0].fitness
+    average = 0
+    for item in population:
+        average = average + item.fitness
+        maximum = item.fitness if item.fitness > maximum else maximum
+        minimum = item.fitness if item.fitness < minimum else minimum
+
+    average = average/len(population)
+
+    name = "hist/evol_history-"+filename+".csv"
+    with open(name, 'a') as file:
+        file.write(str(maximum)+","+str(average)+","+str(minimum)+"\n")
 
 
 def crossover(parent1, parent2, rate):
