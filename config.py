@@ -14,4 +14,6 @@ CONFIG = {
     'crossover_rate': 0.5,  # rate of crossover
     "mutaion_rate": 0.8,    # rate of mutation
     'SUS_in_next_population': True,  # whether to use SUS in next generation selection
+    'mutation_mean': 0,
+    'mutation_standard_deviation': 0.1,
 }

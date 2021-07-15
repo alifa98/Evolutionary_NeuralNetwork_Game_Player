@@ -23,11 +23,11 @@ class Evolution():
 
         for i in range(len(bisases)):
             if(CONFIG["mutaion_rate"] > np.random.rand()):
-                child.nn.biases[i] = child.nn.biases[i] + np.random.normal(0, 0.1, size=bisases[i].shape)
+                child.nn.biases[i] = child.nn.biases[i] + np.random.normal(CONFIG["mutation_mean"], CONFIG["mutation_standard_deviation"], size=bisases[i].shape)
 
         for i in range(len(weight)):
             if(CONFIG["mutaion_rate"] > np.random.rand()):
-                child.nn.weight[i] = child.nn.weight[i] + np.random.normal(0, 0.1, size=bisases[i].shape)
+                child.nn.weight[i] = child.nn.weight[i] + np.random.normal(CONFIG["mutation_mean"], CONFIG["mutation_standard_deviation"], size=bisases[i].shape)
 
     def generate_new_population(self, num_players, prev_players=None):
 

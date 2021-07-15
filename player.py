@@ -86,8 +86,7 @@ class Player():
 
     def init_network(self, mode):
 
-        # you can change the parameters below
-
+        # you can change the parameters below (even you can add more hidden layer)
         layer_sizes = None
         if mode == 'gravity':
             layer_sizes = [6, 20, 2]
