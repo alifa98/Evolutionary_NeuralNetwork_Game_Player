@@ -66,10 +66,12 @@ class Evolution():
 
         # (additional): a selection method other than `top-k`
         # stocastic selection sampling
+
+        selected = []
         if(CONFIG["SUS_in_next_population"]):
-            return sus(players, num_players)
+            selected = sus(players, num_players)
         else:
-            return top_k_selection(players, num_players)
+            selected = top_k_selection(players, num_players)
 
         # (additional): plotting
         # TODO: the save information fucntion is written in functions.py
