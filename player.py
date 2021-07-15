@@ -119,26 +119,26 @@ class Player():
         ann_output = self.nn.forward(input_data)
 
         # (additional) all modes
-        direction = 0
+        player_direction = 0
 
+        maximum_output_index = ann_output.argmax()
         if mode == "thrust":
             # thrust mode wiht 3 output
-            maximux_output_index = ann_output.argmax()
-            if maximux_output_index == 0:
-                direction = 1
-            elif maximux_output_index == 1:
-                direction = 0
+            if maximum_output_index == 0:
+                player_direction = 0
+            elif maximum_output_index == 1:
+                player_direction = -1
             else:
-                direction = -1
+                player_direction = 1
 
         else:
             # gravity and helicopter mode wiht 2 output
-            if ann_output.argmax() == 0:
-                direction = 1
+            if maximum_output_index == 0:
+                player_direction = 1
             else:
-                direction = -1
+                player_direction = -1
 
-        return direction
+        return player_direction
 
     def collision_detection(self, mode, box_lists, camera):
         if mode == 'helicopter':
