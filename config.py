@@ -11,5 +11,7 @@ CONFIG = {
     'seed': 0,             # map of the game
     'num_players': 150,    # number of players generated in each step
     'checkpoint_freq': 5,   # the frequency of saving generations
+    'crossover_rate': 0.5,  # rate of crossover
+    "mutaion_rate": 0.8,    # rate of mutation
     'SUS_in_next_population': True,  # whether to use SUS in next generation selection
 }

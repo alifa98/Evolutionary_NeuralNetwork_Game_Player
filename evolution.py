@@ -16,9 +16,18 @@ class Evolution():
 
     def mutate(self, child):
 
-        # TODO
         # child: an object of class `Player`
-        pass
+
+        bisases = child.nn.biases
+        weight = child.nn.weights
+
+        for i in range(len(bisases)):
+            if(CONFIG["mutaion_rate"] > np.random.rand()):
+                child.nn.biases[i] = child.nn.biases[i] + np.random.normal(0, 0.1, size=bisases[i].shape)
+
+        for i in range(len(weight)):
+            if(CONFIG["mutaion_rate"] > np.random.rand()):
+                child.nn.weight[i] = child.nn.weight[i] + np.random.normal(0, 0.1, size=bisases[i].shape)
 
     def generate_new_population(self, num_players, prev_players=None):
 
@@ -39,11 +48,14 @@ class Evolution():
 
             # (additional): implementing crossover
             paired_parents = zip(selected_references[::2], selected_references[1::2])
-            crossover_rate = 0.5
             selected_clone = []
             for parent1, parent2 in paired_parents:
-                children = crossover(parent1, parent2, crossover_rate)
+                children = crossover(parent1, parent2, CONFIG["crossover_rate"])
                 [selected_clone.append(i) for i in children]
+
+            # mutation
+            for i in range(len(selected_clone)):
+                self.mutate(selected_clone[i])
 
             return selected_clone
 
