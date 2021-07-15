@@ -104,15 +104,18 @@ class Player():
         # velocity example: 7
 
         input_data = np.zeros((5, 1))
-        input_data[0] = box_lists[0].x
-        input_data[1] = box_lists[0].gap_mid
-        input_data[2] = agent_position[0]
-        input_data[3] = agent_position[1]
-        input_data[4] = velocity
-        input_data = input_data / input_data.max()  # normalize input
 
-        ann_output = self.nn.forward(input)
+        # creating nomalized input vector
+        if(len(box_lists) > 0):
+            input_data[0] = box_lists[0].x / CONFIG["WIDTH"]
+            input_data[1] = box_lists[0].gap_mid / CONFIG["HEIGHT"]
+        input_data[2] = agent_position[0] / CONFIG["WIDTH"]
+        input_data[3] = agent_position[1] / CONFIG["HEIGHT"]
+        input_data[4] = velocity / CONFIG["MAXIMUM_VELOCITY"]
 
+        ann_output = self.nn.forward(input_data)
+
+        # (additional) all modes
         direction = 0
         if mode == "thrust":
             maximux_output_index = ann_output.argmax()

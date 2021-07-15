@@ -6,6 +6,7 @@ CONFIG = {
     'fps': 50,             # frame/second
     'camera_speed': 8,     # speed of camera
     'box_gap': 9,          # relative gap between box lists
+    'MAXIMUM_VELOCITY': 10,
 
     # Parameters
     'seed': 0,             # map of the game
