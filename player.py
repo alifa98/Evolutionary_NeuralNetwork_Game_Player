@@ -89,11 +89,11 @@ class Player():
         # you can change the parameters below (even you can add more hidden layer)
         layer_sizes = None
         if mode == 'gravity':
-            layer_sizes = [6, 20, 2]
+            layer_sizes = [5, 20, 2]
         elif mode == 'helicopter':
-            layer_sizes = [6, 20, 2]
+            layer_sizes = [5, 20, 2]
         elif mode == 'thrust':
-            layer_sizes = [6, 20, 3]
+            layer_sizes = [5, 20, 3]
         return layer_sizes
 
     def think(self, mode, box_lists, agent_position, velocity):

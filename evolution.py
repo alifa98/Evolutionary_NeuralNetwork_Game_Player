@@ -1,7 +1,7 @@
 from player import Player
 import numpy as np
 from config import CONFIG
-from myfunctions import cross_over, crossover, sus, top_k_selection, tournament_selection
+from myfunctions import crossover, sus, top_k_selection, tournament_selection
 
 
 class Evolution():
@@ -18,16 +18,16 @@ class Evolution():
 
         # child: an object of class `Player`
 
-        bisases = child.nn.biases
-        weight = child.nn.weights
+        biases = child.nn.biases
+        weights = child.nn.weights
 
-        for i in range(len(bisases)):
+        for i in range(len(biases)):
             if(CONFIG["mutaion_rate"] > np.random.rand()):
-                child.nn.biases[i] = child.nn.biases[i] + np.random.normal(CONFIG["mutation_mean"], CONFIG["mutation_standard_deviation"], size=bisases[i].shape)
+                child.nn.biases[i] = child.nn.biases[i] + np.random.normal(CONFIG["mutation_mean"], CONFIG["mutation_standard_deviation"], size=biases[i].shape)
 
-        for i in range(len(weight)):
+        for i in range(len(weights)):
             if(CONFIG["mutaion_rate"] > np.random.rand()):
-                child.nn.weight[i] = child.nn.weight[i] + np.random.normal(CONFIG["mutation_mean"], CONFIG["mutation_standard_deviation"], size=bisases[i].shape)
+                child.nn.weights[i] = child.nn.weights[i] + np.random.normal(CONFIG["mutation_mean"], CONFIG["mutation_standard_deviation"], size=weights[i].shape)
 
     def generate_new_population(self, num_players, prev_players=None):
 
