@@ -10,5 +10,6 @@ CONFIG = {
     # Parameters
     'seed': 0,             # map of the game
     'num_players': 150,    # number of players generated in each step
-    'checkpoint_freq': 5   # the frequency of saving generations
+    'checkpoint_freq': 5,   # the frequency of saving generations
+    'SUS_in_next_population': True,  # whether to use SUS in next generation selection
 }

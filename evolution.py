@@ -1,6 +1,7 @@
 from player import Player
 import numpy as np
 from config import CONFIG
+from myfunctions import cross_over, crossover, sus, top_k_selection, tournament_selection
 
 
 class Evolution():
@@ -27,23 +28,38 @@ class Evolution():
 
         else:
 
-            # TODO
             # num_players example: 150
-            # prev_players: an array of `Player` objects
+            # prev_players: an array of `Player` objePcts
 
-            # TODO (additional): a selection method other than `fitness proportionate`
-            # TODO (additional): implementing crossover
+            # (additional): a selection method other than `fitness proportionate`
+            # q-tournoment selection (Q = 2) (due to mu+lambda method)
+            selected_references = []
+            for _ in range(num_players):
+                selected_references.append(tournament_selection(prev_players, 2))
 
-            new_players = prev_players
-            return new_players
+            # (additional): implementing crossover
+            paired_parents = zip(selected_references[::2], selected_references[1::2])
+            crossover_rate = 0.5
+            selected_clone = []
+            for parent1, parent2 in paired_parents:
+                children = crossover(parent1, parent2, crossover_rate)
+                [selected_clone.append(i) for i in children]
+
+            return selected_clone
 
     def next_population_selection(self, players, num_players):
 
-        # TODO
         # num_players example: 100
         # players: an array of `Player` objects
 
-        # TODO (additional): a selection method other than `top-k`
-        # TODO (additional): plotting
+        # (additional): a selection method other than `top-k`
+        # stocastic selection sampling
+        if(CONFIG["SUS_in_next_population"]):
+            return sus(players, num_players)
+        else:
+            return top_k_selection(players, num_players)
 
-        return players[: num_players]
+        # (additional): plotting
+        # TODO: the save information fucntion is written in functions.py
+
+        return selected
