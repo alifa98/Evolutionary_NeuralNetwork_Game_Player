@@ -74,7 +74,7 @@ def sus(population, n):
     fitnesses = [agent.fitness for agent in population]
     sum_fitness = sum(fitnesses)
     probabilities = [x / sum_fitness for x in fitnesses]
-    return random.choices(population, probabilities, k=n)
+    return np.random.choice(population, p=probabilities, size=n, replace=False).tolist()
 
 
 def top_k_selection(population, k):
