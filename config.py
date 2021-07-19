@@ -23,6 +23,6 @@ CONFIG = {
     # Note: input & output of network must be handled in `think` method in Player object
     "helicopter_mode_network": [5, 15, 7, 2],
     "gravity_mode_network": [5, 20, 2],
-    "thrust_mode_network": [5, 20, 7, 2],
+    "thrust_mode_network": [5, 20, 7, 3],
     "activation_function": "sigmoid"  # relu or sigmoid
 }
