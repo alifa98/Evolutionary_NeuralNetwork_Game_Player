@@ -28,6 +28,11 @@ You can change neural network architecture and other configurations in `config.p
     "activation_function": "sigmoid"  # relu or sigmoid
 ```
 
+## Game Modes
+Helicopter             |  Gravity          |  Thrust
+:-------------------------:|:-------------------------:|:-------------------------:
+![Helicopter](https://github.com/HosseinZaredar/EvolutionaryGames/blob/main/screenshots/helicopter.png?raw=true)  |  ![Gravity](https://github.com/HosseinZaredar/EvolutionaryGames/blob/main/screenshots/gravity.png?raw=true) | ![Thrust](https://github.com/HosseinZaredar/EvolutionaryGames/blob/main/screenshots/thrust.png?raw=true)
+
 ## How to play
 
 
@@ -54,10 +59,6 @@ After you train a model, you can see the training process by plotting each gener
 ** This file had been saved in `hist` folder **
 
 
-## Game Modes
-Helicopter             |  Gravity          |  Thrust
-:-------------------------:|:-------------------------:|:-------------------------:
-![Helicopter](https://github.com/HosseinZaredar/EvolutionaryGames/blob/main/screenshots/helicopter.png?raw=true)  |  ![Gravity](https://github.com/HosseinZaredar/EvolutionaryGames/blob/main/screenshots/gravity.png?raw=true) | ![Thrust](https://github.com/HosseinZaredar/EvolutionaryGames/blob/main/screenshots/thrust.png?raw=true)
 
 ## Contributors
 - [Ali Faraji](https://github.com/HosseinZaredar)
