@@ -7,7 +7,7 @@ To understand how the code works, you must take a look at these files:
 - `NeuralNetwork` class and its methods in nn.py to
 - `think` method in player.py (box list is a queue which objects append to the end. It can be empty when the game just started.)
 
-You can change neural network architecure and other configurations in `config.py`:
+You can change neural network architecture and other configurations in `config.py`:
 ```
     # Parameters
     'seed': 0,             # map of the game
@@ -28,6 +28,30 @@ You can change neural network architecure and other configurations in `config.py
     "activation_function": "sigmoid"  # relu or sigmoid
 ```
 
+## How to play
+
+
+You can play the game with following command:
+
+`python game.py --mode thrust --play True`
+
+If you wnat to play another mode, just replace `thrust` with the desired game-mode name. (helicopter, gravity, thrust)
+
+Also, you can start the game from a checkpoint which you were there before:
+
+`‫‪python‬‬ ‫‪game.py‬‬ ‫‪--mode‬‬ ‫‪$mode$‬‬ ‫‪--checkpoint‬‬ ‫‪checkpoint/$mode$/$gen_num$‬‬`
+
+## how to train
+
+Just run the mentioned command without `--play True`.
+
+After you train a model, you can see the training process by plotting each generation score:
+
+```
+>> python plot.py 
+>> Enter history file name:evol_history-2021-07-15.18.07.25.csv
+```
+** This file had been saved in `hist` folder **
 
 
 ## Game Modes
