@@ -56,7 +56,7 @@ After you train a model, you can see the training process by plotting each gener
 >> python plot.py 
 >> Enter history file name:evol_history-2021-07-15.18.07.25.csv
 ```
-** This file had been saved in `hist` folder **
+**This file had been saved in `hist` folder**
 
 
 
