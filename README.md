@@ -1,4 +1,4 @@
-# Evolutionary Neural Netwrok
+# Evolutionary Neural Network
 
 We have used an evolutionary algorithm to train an MLP ANN to play the game in this code.
 
@@ -15,13 +15,13 @@ You can change neural network architecture and other configurations in `config.p
     'checkpoint_freq': 5,   # the frequency of saving generations
     'crossover_rate': 0.5,  # rate of crossover
     "mutaion_rate": 0.8,    # rate of mutation
-    'SUS_in_next_population': False,  # whether to use SUS in next generation selection
+    'SUS_in_next_population': False,  # whether to use SUS in next-generation selection
     'mutation_mean': 0,  # gaussian distibution mean
     'mutation_standard_deviation': 0.3,  # gaussian distribution SD
     'q_value_for_tournoment': 5,  # q-tournoment parameter in `generate_new_population`
 
     # ANN setting
-    # Note: input & output of network must be handled in `think` method in Player object
+    # Note: input & output of the network must be handled in the `think` method in the Player object
     "helicopter_mode_network": [5, 15, 7, 2],
     "gravity_mode_network": [5, 20, 2],
     "thrust_mode_network": [5, 20, 7, 3],
@@ -36,17 +36,17 @@ Helicopter             |  Gravity          |  Thrust
 ## How to play
 
 
-You can play the game with following command:
+You can play the game with the following command:
 
 `python game.py --mode thrust --play True`
 
-If you wnat to play another mode, just replace `thrust` with the desired game-mode name. (helicopter, gravity, thrust)
+If you want to play another mode, just replace `thrust` with the desired game-mode name. (helicopter, gravity, thrust)
 
 Also, you can start the game from a checkpoint which you were there before:
 
 `‫‪python‬‬ ‫‪game.py‬‬ ‫‪--mode‬‬ ‫‪$mode$‬‬ ‫‪--checkpoint‬‬ ‫‪checkpoint/$mode$/$gen_num$‬‬`
 
-## how to train
+## How to train
 
 Just run the mentioned command without `--play True`.
 
@@ -56,12 +56,12 @@ After you train a model, you can see the training process by plotting each gener
 >> python plot.py 
 >> Enter history file name:evol_history-2021-07-15.18.07.25.csv
 ```
-**This file had been saved in `hist` folder**
+**This file has been saved in the `hist` folder**
 
 
 
 ## Contributors
-- [Ali Faraji](https://github.com/HosseinZaredar)
+- [Ali Faraji](https://github.com/AliFa98)
 - [Hossein Zaredar](https://github.com/HosseinZaredar)
 - [Matin Tavakoli](https://github.com/MatinTavakoli/) <br>
 - Many thanks to [Parnian Rad](https://github.com/Parnian-Rad)
